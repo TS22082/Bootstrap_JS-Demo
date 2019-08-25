@@ -1,32 +1,31 @@
 $(document).ready(function() {
   var todoArray = [];
-  $('#submitBtn').on('click', () => {
+
+  $('#submitBtn').on('click', function() {
     var todoText = $('#todoText').val();
+
     todoArray.push(todoText);
-    console.log(todoArray);
     displayTodos();
   });
 
   $(document).on('click', '#editBtn', function() {
     var newText = $('#todoText').val();
     var id = $(this).attr('data');
+
     todoArray[id] = newText;
     displayTodos();
   });
 
   $(document).on('click', '#deleteBtn', function() {
     var id = $(this).attr('data');
-    console.log(todoArray[id]);
 
     todoArray.splice(id, 1);
-    console.log(todoArray);
     displayTodos();
   });
 
   function displayTodos() {
     $('#cardContainer').empty();
-    todoArray.forEach((element, index) => {
-      console.log(index);
+    todoArray.forEach(function(element, index) {
       $('#cardContainer').prepend(
         `<div class="card mt-3">
           <div class="card-body">
